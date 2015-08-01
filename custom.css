@@ -90,4 +90,19 @@ input {
   #source a {
     color: #C7433E; }
 
-#yesno { position:fixed; z-index:-1;}
+#yesno {
+  position:fixed;
+  z-index:20;
+  top: 50%;
+  font-size: 80px;
+  width: 100%;
+  display: none;
+}
+
+.no{
+  float: left;
+}
+
+.yes{
+  float: right;
+}
