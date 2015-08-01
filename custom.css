@@ -3,8 +3,13 @@ html, body, ul, li {
   padding: 0; }
 
   @font-face {
-      font-family: mashUpFont;
+      font-family: mashUpFontBlack;
       src: url('./fonts/Colfax-Black.otf');
+  }
+
+  @font-face {
+      font-family: mashUpFont;
+      src: url('./fonts/Colfax-Medium.otf');
   }
 
 body {
@@ -113,6 +118,7 @@ input {
 
 #firstScreen, #viewport{
   display: none;
+  color: white;
 }
 
 .logo{
@@ -123,4 +129,32 @@ input {
   line-height: 70px;
   margin: 10% auto;
   color: white;
+  font-family: mashUpFontBlack;
+}
+
+#firstScreen .black{
+  font-family: mashUpFontBlack;
+  color: rgb(245,239,18);
+  font-size: 25px;
+}
+
+#firstScreen{
+  width: 80%;
+  margin: 5% auto;
+  font-size: 20px;
+  line-height: 25px;
+}
+
+#firstScreen section{
+  margin: 20px 0;
+  width: 100%;
+}
+
+#firstScreen button{
+  color: black;
+background-color: rgb(245,239,18);
+width: 100%;
+margin-top: 30px;
+padding: 12px;
+font-size: 35px;
 }
