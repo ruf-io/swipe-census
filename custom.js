@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 var answertypes = {
-	yesno:'<em>like tinder!</em>',
+	yesno:'@image',
 	text: '<input type="text"/>',
 	slider: '<small>@option1</small><input type="range"/><small>@option2</small>',
 	number: '<input type="number"/>'
@@ -30,7 +30,7 @@ importQuestions = function(data) {
 	for(i=datalen-1; i>=0; i--) {
 		row = data.feed.entry[i];
 		if(row['gsx$question']['$t'].length > 10 ) {
-			html = '<li data-id="' + row['gsx$id']['$t'] + '" data-type="' + row['gsx$answertype']['$t'] + '"> <h2>' + row['gsx$question']['$t'] + '</h2> <p>' + row['gsx$explanation']['$t'] + '</p>' + answertypes[row['gsx$answertype']['$t']].replace('@option1', row['gsx$option1']['$t']).replace('@option2', row['gsx$option2']['$t']) + '</li>';
+			html = '<li data-id="' + row['gsx$id']['$t'] + '" data-type="' + row['gsx$answertype']['$t'] + '"> <h2>' + row['gsx$question']['$t'] + '</h2> <p>' + row['gsx$explanation']['$t'] + '</p>' + answertypes[row['gsx$answertype']['$t']].replace('@option1', row['gsx$option1']['$t']).replace('@option2', row['gsx$option2']['$t']).replace('@image', '<img src="' + row['gsx$image']['$t'] + '">') + '</li>';
 			stack.innerHTML = stack.innerHTML + html;
 		}
 	}
