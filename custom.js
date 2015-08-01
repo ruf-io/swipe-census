@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
-    
+    setTimeout(function(){
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('firstScreen').style.display = 'block';
+    }, 3000);
 });
+
+function startCensus() {
+  document.getElementById('firstScreen').style.display = 'none';
+  document.getElementById('viewport').style.display = 'block';
+}
 
 var importQuestions = function(data) {
 	console.log(data);

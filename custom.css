@@ -2,9 +2,14 @@ html, body, ul, li {
   margin: 0;
   padding: 0; }
 
+  @font-face {
+      font-family: mashUpFont;
+      src: url('./fonts/Colfax-Black.otf');
+  }
+
 body {
-  background: #FCD424;
-  font: normal 16px/24px 'Helvetica Neue', Helvetica, Arial, freesans, sans-serif; }
+  background: #000;
+  font: normal 16px/24px mashUpFont 'Helvetica Neue', Helvetica, Arial, freesans, sans-serif; }
 
 button, input, code {
   display: inline-block;
@@ -104,4 +109,8 @@ input {
 
 .yes{
   float: right;
+}
+
+#firstScreen, #viewport{
+  display: none;
 }
