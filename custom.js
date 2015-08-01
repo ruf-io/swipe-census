@@ -1,10 +1,18 @@
+var answertypes = {
+	yesno:'<em>like tinder!</em>',
+	text: '<input type="text">',
+	slider: '<div id="slider"></div>',
+	number: '<input type="text">'
+};
+
 var importQuestions = function(data) {
-	console.log(data);
 	var datalen = data.feed.entry.length, i, row, stack = document.querySelector('.stack');
 	for(i=0; i<datalen; i++) {
-		row = data.feed.entry[i];
-		html = '<li data-id="' + row['gsx$id']['$t'] + '" data-type="' + row['gsx$answertype']['$t'] + '"> <h2>' + row['gsx$question']['$t'] + '</h2> <p>' + row['gsx$explanation']['$t'] + '</p></li>';
-		stack.innerHTML = stack.innerHTML + html;
+		if(row['gsx$question']['$t'].length > 10 ) {
+			row = data.feed.entry[i];
+			html = '<li data-id="' + row['gsx$id']['$t'] + '" data-type="' + row['gsx$answertype']['$t'] + '"> <h2>' + row['gsx$question']['$t'] + '</h2> <p>' + row['gsx$explanation']['$t'] + '</p>' + answertypes[row['gsx$answertype']['$t']] + '</li>';
+			stack.innerHTML = stack.innerHTML + html;
+		}
 	}
 
 	var stack,
@@ -12,15 +20,6 @@ var importQuestions = function(data) {
     cards;
 
 	config = {
-	    /**
-	     * Invoked in the event of dragmove.
-	     * Returns a value between 0 and 1 indicating the completeness of the throw out condition.
-	     * Ration of the absolute distance from the original card position and element width.
-	     * 
-	     * @param {Number} offset Distance from the dragStart.
-	     * @param {HTMLElement} element Element.
-	     * @return {Number}
-	     */
 	    throwOutConfidence: function (offset, element) {
 	        return Math.min(Math.abs(offset) / element.offsetWidth * 2, 1);
 	    }
