@@ -8,8 +8,8 @@ var answertypes = {
 var importQuestions = function(data) {
 	var datalen = data.feed.entry.length, i, row, stack = document.querySelector('.stack');
 	for(i=0; i<datalen; i++) {
+		row = data.feed.entry[i];
 		if(row['gsx$question']['$t'].length > 10 ) {
-			row = data.feed.entry[i];
 			html = '<li data-id="' + row['gsx$id']['$t'] + '" data-type="' + row['gsx$answertype']['$t'] + '"> <h2>' + row['gsx$question']['$t'] + '</h2> <p>' + row['gsx$explanation']['$t'] + '</p>' + answertypes[row['gsx$answertype']['$t']] + '</li>';
 			stack.innerHTML = stack.innerHTML + html;
 		}
