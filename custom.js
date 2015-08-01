@@ -1,8 +1,8 @@
 var answertypes = {
 	yesno:'<em>like tinder!</em>',
 	text: '<input type="text">',
-	slider: '<div id="slider"></div>',
-	number: '<input type="text">'
+	slider: 'input type="range"/>',
+	number: '<input type="number">'
 };
 
 var importQuestions = function(data) {
