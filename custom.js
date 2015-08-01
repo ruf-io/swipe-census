@@ -1,7 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
-    
-});
-
 var importQuestions = function(data) {
 	console.log(data);
 	var datalen = data.feed.entry.length, i, row, stack = document.querySelector('.stack');
@@ -10,13 +6,32 @@ var importQuestions = function(data) {
 		html = '<li data-id="' + row['gsx$id']['$t'] + '" data-type="' + row['gsx$answertype']['$t'] + '"> <h2>' + row['gsx$question']['$t'] + '</h2> <p>' + row['gsx$explanation']['$t'] + '</p></li>';
 		stack.innerHTML = stack.innerHTML + html;
 	}
-	var stack = gajus.Swing.Stack(),
-        cardElement = document.querySelector('.stack li');
+
+	var stack,
+    config;
+
+	config = {
+	    /**
+	     * Invoked in the event of dragmove.
+	     * Returns a value between 0 and 1 indicating the completeness of the throw out condition.
+	     * Ration of the absolute distance from the original card position and element width.
+	     * 
+	     * @param {Number} offset Distance from the dragStart.
+	     * @param {HTMLElement} element Element.
+	     * @return {Number}
+	     */
+	    throwOutConfidence: function (offset, element) {
+	        return Math.min(Math.abs(offset) / element.offsetWidth * 3, 1);
+	    }
+	};
+
+	stack = gajus.Swing.Stack(config);
+    var cardElement = document.querySelector('.stack li');
 
     window.card = stack.createCard(cardElement);
 
     stack.on('throwoutend', function (e) {
-    	e.target.style.display = 'none';
+    	//e.target.parentNode.rem
         console.log(e.target.innerText || e.target.textContent, 'has been thrown out of the stack to the', e.throwDirection == 1 ? 'right' : 'left', 'direction.');
     });
 
