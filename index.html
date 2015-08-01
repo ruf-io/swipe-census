@@ -6,35 +6,17 @@
     <link rel="stylesheet" href="custom.css">
 
     <script src="swing.min.js"></script>
-    <script src="custom.js"></script>
 </head>
 <body>
     <div id="viewport">
         <ul class="stack">
-            <li data-id="1" data-topic="religion" data-type="yesno">
-                <h2>Are you religious?</h2>
-                <p>Swipe left for NO, right for YES</p>
-            </li>
-            <li data-id="2" data-topic="religion" data-type="slider">
-                <h2>How religious are you?</h2>
-                <p>Slide the slider and then swipe it somewhere.</p>
-                <span>SLIDER HERE</span>
-            </li>
-            <li data-id="2" data-topic="religion" data-type="text">
-                <h2>What religion are you?</h2>
-                <p>Write something below.</p>
-                <input type="text">
-            </li>
-            <li data-id="2" data-topic="religion" data-type="number">
-                <h2>How many times a year do you think about religion?</h2>
-                <p>Write a number below.</p>
-                <input type="text">
-            </li>
         </ul>
     </div>
     <div id="yesno">
         <div class="no">👍</div>
         <div class="yes">👎</div>
     </div>
+    <script src="custom.js"></script>
+    <script src="https://spreadsheets.google.com/feeds/list/12o2Qooip4egMztvjVA4WLujPm3o8jja6JMBX2g4dGG4/od6/public/values?alt=json-in-script&callback=importQuestions"></script>
 </body>
 </html>
