@@ -15,7 +15,8 @@ var importQuestions = function(data) {
 
     window.card = stack.createCard(cardElement);
 
-    stack.on('throwout', function (e) {
+    stack.on('throwoutend', function (e) {
+    	e.target.style.display = 'none';
         console.log(e.target.innerText || e.target.textContent, 'has been thrown out of the stack to the', e.throwDirection == 1 ? 'right' : 'left', 'direction.');
     });
 
