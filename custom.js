@@ -31,7 +31,8 @@ importQuestions = function(data) {
 		row = data.feed.entry[i];
 		if(row['gsx$question']['$t'].length > 10 ) {
 			html = '<li data-id="' + row['gsx$id']['$t'] + '" data-type="' + row['gsx$answertype']['$t'] + '"> <h2>' + row['gsx$question']['$t'] + '</h2> <p>' + row['gsx$explanation']['$t'] + '</p>' + answertypes[row['gsx$answertype']['$t']].replace('@option1', row['gsx$option1']['$t']).replace('@option2', row['gsx$option2']['$t']).replace('@image', '<img src="1_mashUp/' + row['gsx$image']['$t'] + '" height="400px" width="400px">') + '</li>';
-		}
+			stack.innerHTML = stack.innerHTML + html;
+		}	
 	}
 
 	var stack,
