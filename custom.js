@@ -8,7 +8,8 @@ var importQuestions = function(data) {
 	}
 
 	var stack,
-    config;
+    config,
+    cards;
 
 	config = {
 	    /**
@@ -21,17 +22,25 @@ var importQuestions = function(data) {
 	     * @return {Number}
 	     */
 	    throwOutConfidence: function (offset, element) {
-	        return Math.min(Math.abs(offset) / element.offsetWidth * 3, 1);
+	        return Math.min(Math.abs(offset) / element.offsetWidth * 2, 1);
 	    }
 	};
 
 	stack = gajus.Swing.Stack(config);
-    var cardElement = document.querySelector('.stack li');
+    
 
-    window.card = stack.createCard(cardElement);
+
+// Prepare the cards in the stack for iteration.
+cards = [].slice.call(document.querySelectorAll('.stack li'));
+
+cards.forEach(function (targetElement) {
+    // Add card element to the Stack.
+    stack.createCard(targetElement);
+});
+
 
     stack.on('throwoutend', function (e) {
-    	//e.target.parentNode.rem
+    	e.target.parentNode.removeChild(e.target);
         console.log(e.target.innerText || e.target.textContent, 'has been thrown out of the stack to the', e.throwDirection == 1 ? 'right' : 'left', 'direction.');
     });
 
