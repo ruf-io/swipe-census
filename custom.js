@@ -27,7 +27,7 @@ var googleForm = $(window).jqGoogleForms({"formKey": "1zHYIVcquNnogxAbftE3A3qqm1
 uniqueid = ("0000" + (Math.random()*Math.pow(36,4) << 0).toString(36)).slice(-4),
 importQuestions = function(data) {
 	var datalen = data.feed.entry.length, i, row, stack = document.querySelector('.stack');
-	for(i=0; i<datalen; i++) {
+	for(i=datalen-1; i<=0; i--) {
 		row = data.feed.entry[i];
 		if(row['gsx$question']['$t'].length > 10 ) {
 			html = '<li data-id="' + row['gsx$id']['$t'] + '" data-type="' + row['gsx$answertype']['$t'] + '"> <h2>' + row['gsx$question']['$t'] + '</h2> <p>' + row['gsx$explanation']['$t'] + '</p>' + answertypes[row['gsx$answertype']['$t']].replace('@option1', row['gsx$option1']['$t']).replace('@option2', row['gsx$option2']['$t']) + '</li>';
