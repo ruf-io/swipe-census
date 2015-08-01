@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 var answertypes = {
 	yesno:'<em>like tinder!</em>',
-	text: '<input type="text">',
-	slider: 'input type="range"/>',
-	number: '<input type="number">'
+	text: '<input type="text"/>',
+	slider: '<small>@option1</small><input type="range"/><small>@option2</small>',
+	number: '<input type="number"/>'
 };
 
 function startCensus() {
@@ -18,12 +18,14 @@ function startCensus() {
   document.getElementById('viewport').style.display = 'block';
 }
 
-var importQuestions = function(data) {
+var googleForm = $(window).jqGoogleForms({"formKey": "1zHYIVcquNnogxAbftE3A3qqm1kiT2GOZERqZdqbeXDw"}),
+uniqueid = ("0000" + (Math.random()*Math.pow(36,4) << 0).toString(36)).slice(-4),
+importQuestions = function(data) {
 	var datalen = data.feed.entry.length, i, row, stack = document.querySelector('.stack');
 	for(i=0; i<datalen; i++) {
 		row = data.feed.entry[i];
 		if(row['gsx$question']['$t'].length > 10 ) {
-			html = '<li data-id="' + row['gsx$id']['$t'] + '" data-type="' + row['gsx$answertype']['$t'] + '"> <h2>' + row['gsx$question']['$t'] + '</h2> <p>' + row['gsx$explanation']['$t'] + '</p>' + answertypes[row['gsx$answertype']['$t']] + '</li>';
+			html = '<li data-id="' + row['gsx$id']['$t'] + '" data-type="' + row['gsx$answertype']['$t'] + '"> <h2>' + row['gsx$question']['$t'] + '</h2> <p>' + row['gsx$explanation']['$t'] + '</p>' + answertypes[row['gsx$answertype']['$t']].replace('@option1', row['gsx$option1']['$t']).replace('@option2', row['gsx$option2']['$t']) + '</li>';
 			stack.innerHTML = stack.innerHTML + html;
 		}
 	}
@@ -53,14 +55,15 @@ cards.forEach(function (targetElement) {
 
     stack.on('throwoutend', function (e) {
     	e.target.parentNode.removeChild(e.target);
-        console.log(e.target.innerText || e.target.textContent, 'has been thrown out of the stack to the', e.throwDirection == 1 ? 'right' : 'left', 'direction.');
+    	googleForm.sendFormData({
+		    "entry.1840451094": e.target.dataset.id,
+		    "entry.713192399": e.target.querySelector('input').value,
+		    "entry.1207641367": e.throwDirection,
+		    "entry.473262822":uniqueid
+		});
     });
 
-    stack.on('throwin', function (e) {
-        console.log(e.target.innerText || e.target.textContent, 'has been thrown into the stack from the', e.throwDirection == 1 ? 'right' : 'left', 'direction.');
-    });
-
-    stack.on('dragstart', function (e) {
+    stack.on('dragmove', function (e) {
     	document.getElementById('yesno').style.display = "block";
     });
     stack.on('dragend', function (e) {
