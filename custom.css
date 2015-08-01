@@ -163,3 +163,7 @@ margin-top: 30px;
 padding: 12px;
 font-size: 35px;
 }
+
+input[type="text"]{
+  width:80%;
+}
