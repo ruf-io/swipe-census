@@ -116,7 +116,7 @@ input {
   float: right;
 }
 
-#firstScreen, #viewport{
+#firstScreen, #fbScreen, #viewport{
   display: none;
 }
 
@@ -131,13 +131,15 @@ input {
   font-family: mashUpFontBlack;
 }
 
-#firstScreen .black{
+#firstScreen .black,
+#fbScreen .black{
   font-family: mashUpFontBlack;
   color: rgb(245,239,18);
   font-size: 25px;
 }
 
-#firstScreen{
+#firstScreen,
+#fbScreen{
   width: 80%;
   margin: 5% auto;
   font-size: 20px;
@@ -145,12 +147,14 @@ input {
   color: white;
 }
 
-#firstScreen section{
+#firstScreen section,
+#fbScreen section{
   margin: 20px 0;
   width: 100%;
 }
 
-#firstScreen button{
+#firstScreen button,
+#fbScreen button{
   color: black;
 background-color: rgb(245,239,18);
 width: 100%;

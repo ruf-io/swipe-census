@@ -15,6 +15,11 @@ var answertypes = {
 
 function startCensus() {
   document.getElementById('firstScreen').style.display = 'none';
+  document.getElementById('fbScreen').style.display = 'block';
+}
+
+function startQuestions() {
+  document.getElementById('fbScreen').style.display = 'none';
   document.getElementById('viewport').style.display = 'block';
 }
 
