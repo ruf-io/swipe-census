@@ -62,7 +62,7 @@ cards.forEach(function (targetElement) {
     	e.target.parentNode.removeChild(e.target);
     	googleForm.sendFormData({
 		    "entry.1840451094": e.target.dataset.id,
-		    "entry.713192399": e.target.querySelector('input').value||'',
+		    "entry.713192399": (e.target.querySelector('input') ? e.target.querySelector('input').value : ''),
 		    "entry.1207641367": e.throwDirection,
 		    "entry.473262822":uniqueid
 		});
