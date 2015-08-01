@@ -93,8 +93,7 @@ input {
 #yesno {
   position:fixed;
   z-index:20;
-  top: 50%;
-  font-size: 80px;
+  top: 45%;
   width: 100%;
   display: none;
 }
@@ -105,8 +104,4 @@ input {
 
 .yes{
   float: right;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> refs/remotes/origin/master
