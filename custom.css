@@ -118,7 +118,6 @@ input {
 
 #firstScreen, #viewport{
   display: none;
-  color: white;
 }
 
 .logo{
@@ -143,6 +142,7 @@ input {
   margin: 5% auto;
   font-size: 20px;
   line-height: 25px;
+  color: white;
 }
 
 #firstScreen section{
