@@ -1,9 +1,11 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-    setTimeout(function(){
-      document.getElementById('intro').style.display = 'none';
-      document.getElementById('firstScreen').style.display = 'block';
-    }, 3000);
+    // setTimeout(function(){
+    //   document.getElementById('intro').style.display = 'none';
+    //   document.getElementById('firstScreen').style.display = 'block';
+    // }, 3000);
+    document.getElementById('intro').style.display = 'none';
+    document.getElementById('viewport').style.display = 'block';
 });
 
 var answertypes = {
